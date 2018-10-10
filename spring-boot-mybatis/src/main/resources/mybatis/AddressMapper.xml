@@ -20,5 +20,16 @@
    <select id="findById" resultType="int" resultMap="addressRM"> 
 			SELECT * FROM `t_address` WHERE `address_id`=#{id} 
    </select>
+   <delete id="deleteMoreById" parameterType="List">
+      delete from `test`.`t_address` 
+        <where>
+          address_id in
+          <foreach collection="list" item="arr" open="("
+			separator="," close=")">
+			#{arr}
+		</foreach>
+        </where>
+    
+   </delete>
 
 </mapper>

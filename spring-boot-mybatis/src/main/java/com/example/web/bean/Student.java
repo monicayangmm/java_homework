@@ -4,6 +4,7 @@ public class Student {
 	private int id;
 	private String name;
 	private int age;
+	private Grade grade;
 
 	private Address address;
 	
@@ -48,7 +49,7 @@ public class Student {
 		this.age = age;
 	}
 
-	
+
 	public Address getAddress() {
 		return address;
 	}
@@ -56,19 +57,20 @@ public class Student {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
 
+	public Grade getGrade() {
+		return grade;
+	}
 
+	public void setGrade(Grade grade) {
+		this.grade = grade;
+	}
 
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", address="
 				+ address + "]";
 	}
-
 	
-
-	
-	
-	
-
 }

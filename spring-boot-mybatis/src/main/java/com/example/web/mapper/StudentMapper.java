@@ -1,5 +1,8 @@
 package com.example.web.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.web.bean.Student;
@@ -12,6 +15,7 @@ public interface StudentMapper {
 	public void add(Student stu);
 	public void update(Student stu);
 	public void delete(int id); 
+	public Student selectByNameAge(Map<String, Object> map);
 
 
 }

@@ -1,10 +1,17 @@
 package com.example.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.web.bean.Address;
 import com.example.web.bean.Grade;
@@ -15,6 +22,8 @@ import com.example.web.mapper.StudentMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+//@Transactional
+//@Rollback(false)
 public class SpringBootMybatisApplicationTests {
 	
 	@Autowired
@@ -27,7 +36,7 @@ public class SpringBootMybatisApplicationTests {
 	@Test
 	public void test(){
 //		this.getStudent();
-		this.getGrade();
+//		this.getGrade();
 //		this.getAddress();
 //		this.addGrade();
 //		this.updateGrade();
@@ -38,6 +47,8 @@ public class SpringBootMybatisApplicationTests {
 //		this.addStudent();
 //		this.updateStudent();
 //		this.deleteStudent();
+		this.selectMap();
+//		this.deleteMoreAddr();
 	}
 
     void addGrade() {
@@ -99,6 +110,22 @@ public class SpringBootMybatisApplicationTests {
     void getAddress() {
     	Address addr = addressMapper.findById(1);
     	System.out.println(addr.toString());
+    }
+    void selectMap(){
+    	Map<String, Object> map=new HashMap<>();
+    	map.put("name", "张三");
+    	map.put("age", 20);
+    	Student s=(Student) studentMapper.selectByNameAge(map);
+//    	System.out.println(s);
+    	System.out.println("班级名称："+s.getGrade().getName());
+    	System.out.println("地址："+s.getAddress().getAddress());
+    }
+    void deleteMoreAddr(){
+    	List<Integer> list = new ArrayList<>();
+    	list.add(4);
+    	list.add(5);
+    	addressMapper.deleteMoreById(list);
+    	
     }
 
 //	@Test

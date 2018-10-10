@@ -10,7 +10,8 @@
       <id column="id" jdbcType="INTEGER" property="id"></id>
       <result column="name" jdbcType="VARCHAR" property="name"/>
       <result column="age" jdbcType="INTEGER" property="age"/>
-      
+      <!-- <result column="class_id" jdbcType="INTEGER" property="gradeId"/> -->
+      <association column="class_id" property="grade" javaType="com.example.web.bean.Grade" select="com.example.web.mapper.GradeMapper.findById"/>
       <association column="address_id" property="address" javaType="com.example.web.bean.Address" select="com.example.web.mapper.AddressMapper.findById"/>
    </resultMap>
    <insert id="add" parameterType="com.example.web.bean.Student"> 
@@ -33,5 +34,17 @@
    <!-- <select id="findByAddrId" parameterType="int" resultMap="AddressResult"> 
 			select * from t_address where address_id = #{id}
    </select> -->
+   <select id="selectByNameAge" parameterType="Map" resultMap="studentRM">
+      select * from t_student 
+      <where>
+        <if test="name!=null">
+          name=#{name}
+        </if>
+        <if test="age!=null">
+          and age=#{age}
+        </if>
+      </where>
+   
+   </select>
 
 </mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.web.mapper.StudentMapper">
+   <!-- <resultMap type="com.example.web.bean.Address" id="AddressResult"> 
+	   <id column="address_id" jdbcType="INTEGER" property="id" /> 
+	   <result column="address" jdbcType="VARCHAR" property="address"/> 
+   </resultMap> -->
+   <resultMap id="studentRM" type="com.example.web.bean.Student">
+      <id column="id" jdbcType="INTEGER" property="id"></id>
+      <result column="name" jdbcType="VARCHAR" property="name"/>
+      <result column="age" jdbcType="INTEGER" property="age"/>
+      
+      <association column="address_id" property="address" javaType="com.example.web.bean.Address" select="com.example.web.mapper.AddressMapper.findById"/>
+   </resultMap>
+   <insert id="add" parameterType="com.example.web.bean.Student"> 
+					INSERT INTO `t_student`(`id`,`name`,`age`) 
+					VALUES(#{id},#{name},#{age}) 
+   </insert>
+   <update id="update"> 
+			UPDATE `test`.`t_student` SET `name`=#{name}
+			WHERE `id`=#{id}; 
+   </update> 
+   <delete id="delete" parameterType="int"> 
+		   DELETE FROM `test`.`t_student` WHERE `id`=#{id} ;
+   </delete>
+   <select id="findById" parameterType="int" resultMap="studentRM"> 
+			SELECT * FROM t_student where id=#{id} 
+   </select>
+   <select id="findByGradeId" parameterType="int" resultMap="studentRM"> 
+			SELECT * FROM t_student where class_id=#{class_id} 
+   </select>
+   <!-- <select id="findByAddrId" parameterType="int" resultMap="AddressResult"> 
+			select * from t_address where address_id = #{id}
+   </select> -->
+
+</mapper>

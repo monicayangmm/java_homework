@@ -66,6 +66,10 @@ public class Student {
 	public void setGrade(Grade grade) {
 		this.grade = grade;
 	}
+	public String test(){
+		return "Student [id=" + id + ", name=" + name + ", age=" + age +",grade="+grade.getName()+ ", address="
+				+ address.getAddress() + "]";
+	}
 
 	@Override
 	public String toString() {

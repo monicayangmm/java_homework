@@ -116,7 +116,7 @@ public class SpringBootMybatisApplicationTests {
     	map.put("name", "张三");
     	map.put("age", 20);
     	Student s=(Student) studentMapper.selectByNameAge(map);
-//    	System.out.println(s);
+    	System.out.println(s.test());
     	System.out.println("班级名称："+s.getGrade().getName());
     	System.out.println("地址："+s.getAddress().getAddress());
     }

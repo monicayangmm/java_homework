@@ -15,7 +15,8 @@ public interface StudentMapper {
 	public void add(Student stu);
 	public void update(Student stu);
 	public void delete(int id); 
-	public Student selectByNameAge(Map<String, Object> map);
+	public List<Student> selectByNameAge(Map<String, Object> map);
+	public List<Student> findAll();
 
 
 }

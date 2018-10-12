@@ -35,7 +35,7 @@ public class SpringBootMybatisApplicationTests {
 	
 	@Test
 	public void test(){
-//		this.getStudent();
+		this.getStudent();
 //		this.getGrade();
 //		this.getAddress();
 //		this.addGrade();
@@ -47,7 +47,7 @@ public class SpringBootMybatisApplicationTests {
 //		this.addStudent();
 //		this.updateStudent();
 //		this.deleteStudent();
-		this.selectMap();
+//		this.selectMap();
 //		this.deleteMoreAddr();
 	}
 
@@ -115,10 +115,10 @@ public class SpringBootMybatisApplicationTests {
     	Map<String, Object> map=new HashMap<>();
     	map.put("name", "张三");
     	map.put("age", 20);
-    	Student s=(Student) studentMapper.selectByNameAge(map);
-    	System.out.println(s.test());
-    	System.out.println("班级名称："+s.getGrade().getName());
-    	System.out.println("地址："+s.getAddress().getAddress());
+    	List<Student> s=(List<Student>) studentMapper.selectByNameAge(map);
+    	System.out.println(s);
+//    	System.out.println("班级名称："+s);
+//    	System.out.println("地址："+s.getAddress().getAddress());
     }
     void deleteMoreAddr(){
     	List<Integer> list = new ArrayList<>();

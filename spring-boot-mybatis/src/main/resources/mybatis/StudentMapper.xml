@@ -19,7 +19,7 @@
 					VALUES(#{id},#{name},#{age}) 
    </insert>
    <update id="update"> 
-			UPDATE `test`.`t_student` SET `name`=#{name}
+			UPDATE `test`.`t_student` SET `name`=#{name},`age`=#{age},`class_id`=#{gradeId}
 			WHERE `id`=#{id}; 
    </update> 
    <delete id="delete" parameterType="int"> 
@@ -34,7 +34,7 @@
    <!-- <select id="findByAddrId" parameterType="int" resultMap="AddressResult"> 
 			select * from t_address where address_id = #{id}
    </select> -->
-   <select id="selectByNameAge" parameterType="Map" resultMap="studentRM">
+   <select id="selectByNameAge" parameterType="list" resultMap="studentRM">
       select * from t_student 
       <where>
         <if test="name!=null">
@@ -45,6 +45,9 @@
         </if>
       </where>
    
+   </select>
+   <select id="findAll" parameterType="list" resultMap="studentRM">
+      select * from t_student
    </select>
 
 </mapper>

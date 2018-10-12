@@ -1,9 +1,16 @@
 package com.example.web.bean;
 
-public class Student {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+public class Student{
 	private int id;
 	private String name;
 	private int age;
+	private int gradeId;
+	
+
+	@JsonIgnore
 	private Grade grade;
 
 	private Address address;
@@ -21,6 +28,14 @@ public class Student {
 		this.name = name;
 		this.age = age;
 		this.address = address;
+	}
+	public Student(int id,String name, int age,int gradeId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.gradeId = gradeId;
+
 	}
 
 
@@ -50,6 +65,18 @@ public class Student {
 	}
 
 
+	public int getGradeId() {
+		return gradeId;
+	}
+
+
+
+	public void setGradeId(int gradeId) {
+		this.gradeId = gradeId;
+	}
+
+
+
 	public Address getAddress() {
 		return address;
 	}
@@ -66,15 +93,17 @@ public class Student {
 	public void setGrade(Grade grade) {
 		this.grade = grade;
 	}
-	public String test(){
-		return "Student [id=" + id + ", name=" + name + ", age=" + age +",grade="+grade.getName()+ ", address="
-				+ address.getAddress() + "]";
-	}
+//	public String test(){
+//		return "Student [id=" + id + ", name=" + name + ", age=" + age +",grade="+grade.getName()+ ", address="
+//				+ address.getAddress() + "]";
+//	}
 
-	@Override
+//	
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", address="
-				+ address + "]";
+		return "Student [id=" + id + ", name=" + name + ", age=" + age +
+//				",grade="+grade.getName()+ 
+//				", address="+ address.getAddress() + 
+				"]";
 	}
 	
 }
